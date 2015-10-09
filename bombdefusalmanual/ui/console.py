@@ -7,7 +7,7 @@ Console user interface to ask questions and collect answers.
 :License: MIT, see LICENSE for details.
 """
 
-from .ui.models import Answer, Question
+from .models import Answer, Question
 
 
 def ask_question(question):

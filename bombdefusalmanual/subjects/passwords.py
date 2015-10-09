@@ -9,8 +9,8 @@ On the Subject of Passwords
 
 from string import ascii_lowercase
 
+from ..ui.console import ask_for_input, display_instruction, display_question
 from ..ui.models import Question
-from ..userinterface import ask_for_input, display_instruction, display_question
 
 
 PASSWORDS = frozenset([

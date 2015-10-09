@@ -9,8 +9,8 @@ On the Subject of Who's on First
 
 from enum import Enum
 
+from ..ui.console import ask_for_input, display_instruction, display_question
 from ..ui.models import Question
-from ..userinterface import ask_for_input, display_instruction, display_question
 
 
 ButtonPosition = Enum('ButtonPosition', [

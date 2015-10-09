@@ -7,8 +7,8 @@ On the Subject of Morse Code
 :License: MIT, see LICENSE for details.
 """
 
+from ..ui.console import ask_for_input, display_instruction, display_question
 from ..ui.models import Question
-from ..userinterface import ask_for_input, display_instruction, display_question
 
 
 MORSE_CODE_SYMBOLS = frozenset('.-')

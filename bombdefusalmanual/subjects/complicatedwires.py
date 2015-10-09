@@ -9,8 +9,8 @@ On the Subject of Complicated Wires
 
 from enum import Enum
 
+from ..ui.console import ask_question, display_instruction
 from ..ui.models import Answer, Question
-from ..userinterface import ask_question, display_instruction
 
 
 LED = Enum('LED', 'on off')

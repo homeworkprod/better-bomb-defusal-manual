@@ -9,8 +9,8 @@ On the Subject of The Button
 
 from enum import Enum
 
+from ..ui.console import ask_question, display_instruction
 from ..ui.models import Answer, Question
-from ..userinterface import ask_question, display_instruction
 
 
 ButtonColor = Enum('ButtonColor', 'blue white yellow red other')
