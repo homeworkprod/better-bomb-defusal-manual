@@ -9,8 +9,8 @@ On the Subject of The Button
 
 from enum import Enum
 
-from ..ui.console import ask_question, display_instruction
-from ..ui.models import Answer, Question
+from ..ui.console import ask_for_choice, display_instruction
+from ..ui.models import Answer
 
 
 ButtonColor = Enum('ButtonColor', 'blue white yellow red other')
@@ -69,12 +69,12 @@ def get_instruction():
 
 def ask_for_button_color():
     answers = [Answer(member, member.name) for member in ButtonColor]
-    return ask_for_value('Which color does the button have?', answers)
+    return ask_for_choice('Which color does the button have?', answers)
 
 
 def ask_for_button_label():
     answers = list(generate_button_label_answers())
-    return ask_for_value('What does the button say?', answers)
+    return ask_for_choice('What does the button say?', answers)
 
 
 def generate_button_label_answers():
@@ -87,14 +87,14 @@ def generate_button_label_answers():
 
 def ask_for_battery_count():
     answers = [Answer(member, member.name) for member in BatteryCount]
-    return ask_for_value('How many batteries are there?', answers)
+    return ask_for_choice('How many batteries are there?', answers)
 
 
 def ask_for_lit_indicator_label(indicator_label):
     question_label = 'Is there a lit indicator labeled "{}"?' \
                      .format(indicator_label.name)
     answers = [Answer(member, member.name) for member in Exists]
-    value = ask_for_value(question_label, answers)
+    value = ask_for_choice(question_label, answers)
     return indicator_label.value if value is Exists.yes else None
 
 
@@ -111,14 +111,9 @@ def get_button_release_instruction():
 
 def ask_for_strip_color():
     answers = [Answer(member, member.name) for member in StripColor]
-    return ask_for_value(
+    return ask_for_choice(
         'Which color does the strip to the right of the button have?',
         answers)
-
-
-def ask_for_value(question_label, answers):
-    question = Question(question_label, answers)
-    return ask_question(question)
 
 
 def execute():

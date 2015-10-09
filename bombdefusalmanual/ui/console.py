@@ -10,6 +10,11 @@ Console user interface to ask questions and collect answers.
 from .models import Answer, Question
 
 
+def ask_for_choice(question_label, answers):
+    question = Question(question_label, answers)
+    return ask_question(question)
+
+
 def ask_question(question):
     """Present a question to the user and return the value of the
     selected answer.

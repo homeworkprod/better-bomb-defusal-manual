@@ -9,8 +9,8 @@ On the Subject of Complicated Wires
 
 from enum import Enum
 
-from ..ui.console import ask_question, display_instruction
-from ..ui.models import Answer, Question
+from ..ui.console import ask_for_choice, display_instruction
+from ..ui.models import Answer
 
 
 LED = Enum('LED', 'on off')
@@ -50,29 +50,29 @@ COMBINATORICS = {
 }
 
 
-QUESTIONS = [
-    Question(
+QUESTIONS_AND_ANSWERS = [
+    (
         'Is the LED above the wire on?',
         [
             Answer(LED.on, 'yes'),
             Answer(LED.off, 'no'),
         ],
     ),
-    Question(
+    (
         'Does the wire have red coloring?',
         [
             Answer(Red.yes, 'yes'),
             Answer(Red.no, 'no'),
         ],
     ),
-    Question(
+    (
         'Does the wire have blue coloring?',
         [
             Answer(Blue.yes, 'yes'),
             Answer(Blue.no, 'no'),
         ],
     ),
-    Question(
+    (
         'Is a star symbol below the wire?',
         [
             Answer(Star.yes, 'yes'),
@@ -83,8 +83,8 @@ QUESTIONS = [
 
 
 def ask_questions():
-    for question in QUESTIONS:
-        yield ask_question(question)
+    for question_label, answers in QUESTIONS_AND_ANSWERS:
+        yield ask_for_choice(question_label, answers)
 
 
 def get_instruction(answer_values):
