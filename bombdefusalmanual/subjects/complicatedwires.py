@@ -17,7 +17,7 @@ Red = Enum('Red', 'yes no')
 Blue = Enum('Blue', 'yes no')
 Star = Enum('Star', 'yes no')
 
-InstructionLetter = Enum('Instruction', 'C D S P B')
+InstructionLetter = Enum('InstructionLetter', 'C D S P B')
 
 
 INSTRUCTIONS = {
