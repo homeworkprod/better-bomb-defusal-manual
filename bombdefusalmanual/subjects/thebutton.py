@@ -48,7 +48,7 @@ def get_instruction():
     if (button_color is ButtonColor.white) and (lit_indicator_label is IndicatorLabel.CAR):
         return get_button_release_instruction()
 
-    lit_indicator_label = ask_for_lit_indicator_label(IndicatorLabel.CAR)
+    lit_indicator_label = ask_for_lit_indicator_label(IndicatorLabel.FRK)
 
     # Rule #4
     if (battery_count is BatteryCount.more_than_two) and (lit_indicator_label is IndicatorLabel.FRK):
