@@ -89,7 +89,7 @@ def ask_for_battery_count():
     return ask_for_value('How many batteries are there?', answers)
 
 
-def ask_for_lit_indicator(indicator_label):
+def ask_for_lit_indicator_label(indicator_label):
     question_label = 'Is there a lit indicator labeled {}?' \
                      .format(indicator_label.name)
     answers = [Answer(member, member.name) for member in Exists]
