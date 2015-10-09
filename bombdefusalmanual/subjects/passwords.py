@@ -9,8 +9,7 @@ On the Subject of Passwords
 
 from string import ascii_lowercase
 
-from ..ui.console import ask_for_input, display_instruction, display_question
-from ..ui.models import Question
+from ..ui.console import ask_for_text, display_instruction
 
 
 PASSWORDS = frozenset([
@@ -49,10 +48,7 @@ def ask_for_letters_and_match_passwords(position_index, passwords):
 def ask_for_letters_in_position(position_index):
     question_label = 'Which letters can be chosen at position {:d}?' \
                      .format(position_index + 1)
-    question = Question(question_label, [])
-    display_question(question)
-
-    values = ask_for_input()
+    values = ask_for_text(question_label)
     return extract_letters(values)
 
 

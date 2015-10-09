@@ -7,8 +7,7 @@ On the Subject of Morse Code
 :License: MIT, see LICENSE for details.
 """
 
-from ..ui.console import ask_for_input, display_instruction, display_question
-from ..ui.models import Question
+from ..ui.console import ask_for_text, display_instruction
 
 
 MORSE_CODE_SYMBOLS = frozenset('.-')
@@ -58,10 +57,8 @@ def ask_for_and_translate_morse_code():
 
 
 def ask_for_morse_code():
-    question = Question('Enter Morse code (`.` = short, `-` = long):', [])
-    display_question(question)
-
-    values = ask_for_input()
+    question_label = 'Enter Morse code (`.` = short, `-` = long):'
+    values = ask_for_text(question_label)
     return extract_morse_symbols(values)
 
 

@@ -9,8 +9,7 @@ On the Subject of Who's on First
 
 from enum import Enum
 
-from ..ui.console import ask_for_input, display_instruction, display_question
-from ..ui.models import Question
+from ..ui.console import ask_for_text, display_instruction
 
 
 ButtonPosition = Enum('ButtonPosition', [
@@ -91,10 +90,8 @@ def step1():
     """Ask for the word on the display and return the position of the
     button to check out next.
     """
-    question = Question('What does the display say?', [])
-    display_question(question)
-
-    display_word = normalize(ask_for_input())
+    question_label = 'What does the display say?'
+    display_word = normalize(ask_for_text(question_label))
     return DISPLAY_VALUES_TO_BUTTON_POSITIONS.get(display_word)
 
 
@@ -104,10 +101,7 @@ def step2(button_position):
     """
     question_label = 'What does the button in the {} say?' \
                       .format(button_position.name.replace('_', ' ').upper())
-    question = Question(question_label, [])
-    display_question(question)
-
-    button_label = normalize(ask_for_input())
+    button_label = normalize(ask_for_text(question_label))
     return BUTTON_LABELS_FORWARDS.get(button_label)
 
 
