@@ -15,6 +15,7 @@ from bombdefusalmanual.userinterface import Answer, Question, ask_question
 ANSWERS = [
     Answer('thebutton', 'The Button'),
     Answer('complicatedwires', 'Complicated Wires'),
+    Answer('passwords', 'Passwords'),
 ]
 
 QUESTION = Question('Which subject?', ANSWERS)

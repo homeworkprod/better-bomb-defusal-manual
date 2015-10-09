@@ -24,7 +24,7 @@ def ask_question(question):
     while True:
         display_question_and_answers(question)
         valid_values = get_valid_values(question)
-        selection_input = input('> ')
+        selection_input = ask_for_input()
         if selection_input in valid_values:
             break
 
@@ -32,10 +32,18 @@ def ask_question(question):
     return question.answers[selected_index]
 
 
+def ask_for_input():
+    return input('> ')
+
+
 def display_question_and_answers(question):
-    print('\n' + question.label)
+    display_question(question)
     for i, answer in enumerate(question.answers, start=1):
         print('[{:d}] {}'.format(i, answer.label))
+
+
+def display_question(question):
+    print('\n' + question.label)
 
 
 def get_valid_values(question):
