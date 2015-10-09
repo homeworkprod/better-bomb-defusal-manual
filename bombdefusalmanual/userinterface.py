@@ -14,12 +14,6 @@ Question = namedtuple('Question', 'label answers')
 Answer = namedtuple('Answer', 'value label')
 
 
-def ask_questions(questions):
-    for question in questions:
-        selected_answer = ask_question(question)
-        print('You selected:', selected_answer)
-
-
 def ask_question(question):
     """Present a question to the user and return the value of the
     selected answer.
