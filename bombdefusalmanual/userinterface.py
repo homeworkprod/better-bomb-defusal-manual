@@ -40,3 +40,7 @@ def display_question_and_answers(question):
 
 def get_valid_values(question):
     return frozenset(map(str, range(1, len(question.answers) + 1)))
+
+
+def display_instruction(text):
+    print('\n  => {} <=\n'.format(text))

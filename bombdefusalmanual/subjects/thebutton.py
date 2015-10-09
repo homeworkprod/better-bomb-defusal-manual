@@ -9,7 +9,7 @@ On the Subject of The Button
 
 from enum import Enum
 
-from ..userinterface import Answer, Question, ask_question
+from ..userinterface import Answer, Question, ask_question, display_instruction
 
 
 ButtonColor = Enum('ButtonColor', 'blue white yellow red other')
@@ -122,4 +122,4 @@ def ask_for_value(question_label, answers):
 
 def execute():
     button_release = get_instruction()
-    print('\n => Press button. Release {}.'.format(button_release))
+    display_instruction('Press button. Release {}.'.format(button_release))

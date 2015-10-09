@@ -9,7 +9,7 @@ On the Subject of Complicated Wires
 
 from enum import Enum
 
-from ..userinterface import Answer, Question, ask_question
+from ..userinterface import Answer, Question, ask_question, display_instruction
 
 
 LED = Enum('LED', 'on off')
@@ -95,4 +95,4 @@ def get_instruction(answer_values):
 def execute():
     answer_values = tuple(ask_questions())
     instruction = get_instruction(answer_values)
-    print('\n => ' + instruction)
+    display_instruction(instruction)
