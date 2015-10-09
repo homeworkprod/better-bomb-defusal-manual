@@ -26,11 +26,11 @@ def ask_for_subject():
     return ask_for_choice('Which subject?', ANSWERS)
 
 
-def execute_subject_module(name):
-    module = import_module('bombdefusalmanual.subjects.{}'.format(name))
-    module.execute()
+def import_subject_module(name):
+    return import_module('bombdefusalmanual.subjects.{}'.format(name))
 
 
 if __name__ == '__main__':
     subject_name = ask_for_subject()
-    execute_subject_module(subject_name)
+    module = import_subject_module(subject_name)
+    module.execute()
