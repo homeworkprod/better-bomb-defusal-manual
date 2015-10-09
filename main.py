@@ -17,6 +17,7 @@ ANSWERS = [
     Answer('complicatedwires', 'Complicated Wires'),
     Answer('morsecode', 'Morse Code'),
     Answer('passwords', 'Passwords'),
+    Answer('whosonfirst', 'Who\'s on First'),
 ]
 
 QUESTION = Question('Which subject?', ANSWERS)
