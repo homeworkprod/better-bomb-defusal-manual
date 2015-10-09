@@ -1,0 +1,13 @@
+# Python 3 bytecode
+__pycache__
+
+# virtual environment
+venv/
+
+# packaging/distribution
+build/
+dist/
+*.egg-info/
+
+# testing
+.tox/
