@@ -7,8 +7,29 @@
 :License: MIT, see LICENSE for details.
 """
 
-from bombdefusalmanual.subjects.complicatedwires import execute
+from importlib import import_module
+
+from bombdefusalmanual.userinterface import Answer, Question, ask_question
+
+
+ANSWERS = [
+    Answer('thebutton', 'The Button'),
+    Answer('complicatedwires', 'Complicated Wires'),
+]
+
+QUESTION = Question('Which subject?', ANSWERS)
+
+
+def ask_for_subject():
+    selected_answer = ask_question(QUESTION)
+    return selected_answer.value
+
+
+def execute_subject_module(name):
+    module = import_module('bombdefusalmanual.subjects.{}'.format(name))
+    module.execute()
 
 
 if __name__ == '__main__':
-    execute()
+    subject_name = ask_for_subject()
+    execute_subject_module(subject_name)
