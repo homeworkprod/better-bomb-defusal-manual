@@ -39,7 +39,7 @@ def get_instruction():
     battery_count = ask_for_battery_count()
 
     # Rule #2
-    if (battery_count > 1) and (button_label is ButtonLabel.Detonate):
+    if (battery_count is not BatteryCount.one_or_less) and (button_label is ButtonLabel.Detonate):
         return get_button_release_instruction()
 
     lit_indicator_label = ask_for_lit_indicator_label(IndicatorLabel.CAR)
@@ -51,7 +51,7 @@ def get_instruction():
     lit_indicator_label = ask_for_lit_indicator_label(IndicatorLabel.CAR)
 
     # Rule #4
-    if (battery_count > 2) and (lit_indicator_label is IndicatorLabel.FRK):
+    if (battery_count is BatteryCount.more_than_two) and (lit_indicator_label is IndicatorLabel.FRK):
         return Release.immediately
 
     # Rule #5
