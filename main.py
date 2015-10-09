@@ -9,8 +9,8 @@
 
 from importlib import import_module
 
-from bombdefusalmanual.ui.console import ask_question
-from bombdefusalmanual.ui.models import Answer, Question
+from bombdefusalmanual.ui.console import ask_for_choice
+from bombdefusalmanual.ui.models import Answer
 
 
 ANSWERS = [
@@ -21,11 +21,9 @@ ANSWERS = [
     Answer('whosonfirst', 'Who\'s on First'),
 ]
 
-QUESTION = Question('Which subject?', ANSWERS)
-
 
 def ask_for_subject():
-    return ask_question(QUESTION)
+    return ask_for_choice('Which subject?', ANSWERS)
 
 
 def execute_subject_module(name):
