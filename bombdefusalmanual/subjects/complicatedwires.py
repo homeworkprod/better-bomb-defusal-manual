@@ -83,8 +83,7 @@ QUESTIONS = [
 
 def ask_questions():
     for question in QUESTIONS:
-        selected_answer = ask_question(question)
-        yield selected_answer.value
+        yield ask_question(question)
 
 
 def get_instruction(answer_values):

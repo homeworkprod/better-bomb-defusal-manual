@@ -117,7 +117,7 @@ def ask_for_strip_color():
 
 def ask_for_value(question_label, answers):
     question = Question(question_label, answers)
-    return ask_question(question).value
+    return ask_question(question)
 
 
 def execute():

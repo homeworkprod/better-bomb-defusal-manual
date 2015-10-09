@@ -23,8 +23,7 @@ QUESTION = Question('Which subject?', ANSWERS)
 
 
 def ask_for_subject():
-    selected_answer = ask_question(QUESTION)
-    return selected_answer.value
+    return ask_question(QUESTION)
 
 
 def execute_subject_module(name):

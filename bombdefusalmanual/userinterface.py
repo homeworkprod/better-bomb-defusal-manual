@@ -17,10 +17,13 @@ Answer = namedtuple('Answer', 'value label')
 def ask_questions(questions):
     for question in questions:
         selected_answer = ask_question(question)
-        print('You selected:', selected_answer.value)
+        print('You selected:', selected_answer)
 
 
 def ask_question(question):
+    """Present a question to the user and return the value of the
+    selected answer.
+    """
     while True:
         display_question_and_answers(question)
         valid_values = get_valid_values(question)
@@ -29,7 +32,8 @@ def ask_question(question):
             break
 
     selected_index = int(selection_input) - 1
-    return question.answers[selected_index]
+    answer = question.answers[selected_index]
+    return answer.value
 
 
 def ask_for_input():
