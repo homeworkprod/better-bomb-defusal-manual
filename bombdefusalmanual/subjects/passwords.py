@@ -24,9 +24,11 @@ PASSWORDS = frozenset([
 ])
 
 
-def ask_for_letters_in_first_position():
-    letters = ask_for_letters_in_position('first')
-    matches = list(get_passwords_starting_with(letters))
+def ask_for_letters_and_match_passwords(position_index, passwords):
+    letters = ask_for_letters_in_position(position_index)
+    matches = list(get_passwords_matching_letters_in_position(passwords,
+                                                              position_index,
+                                                              letters))
 
     if not matches:
         display_instruction('No password matches!')
@@ -41,10 +43,12 @@ def ask_for_letters_in_first_position():
     for match in matches:
         print('  ->', match)
 
+    ask_for_letters_and_match_passwords(position_index + 1, matches)
 
-def ask_for_letters_in_position(position_label):
-    question_label = 'Which letters are selectable in the {} position?' \
-                     .format(position_label)
+
+def ask_for_letters_in_position(position_index):
+    question_label = 'Which letters can be chosen at position {:d}?' \
+                     .format(position_index + 1)
     question = Question(question_label, [])
     display_question(question)
 
@@ -58,11 +62,13 @@ def extract_letters(value):
     return lowercase_values.intersection(ascii_lowercase)
 
 
-def get_passwords_starting_with(letters):
-    """Return all passwords whose first letter is any of the given ones."""
-    predicate = lambda word: word[0] in letters
-    return filter(predicate, PASSWORDS)
+def get_passwords_matching_letters_in_position(passwords, position, letters):
+    """Return all passwords that contain any of the given letters at the
+    indicated position.
+    """
+    predicate = lambda password: password[position] in letters
+    return filter(predicate, passwords)
 
 
 def execute():
-    ask_for_letters_in_first_position()
+    ask_for_letters_and_match_passwords(0, PASSWORDS)
