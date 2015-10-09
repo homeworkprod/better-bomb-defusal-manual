@@ -9,7 +9,8 @@
 
 from importlib import import_module
 
-from bombdefusalmanual.userinterface import Answer, Question, ask_question
+from bombdefusalmanual.ui.models import Answer, Question
+from bombdefusalmanual.userinterface import ask_question
 
 
 ANSWERS = [

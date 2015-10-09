@@ -7,11 +7,7 @@ Console user interface to ask questions and collect answers.
 :License: MIT, see LICENSE for details.
 """
 
-from collections import namedtuple
-
-
-Question = namedtuple('Question', 'label answers')
-Answer = namedtuple('Answer', 'value label')
+from .ui.models import Answer, Question
 
 
 def ask_question(question):
