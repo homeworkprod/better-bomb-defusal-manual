@@ -9,7 +9,6 @@ On the Subject of Complicated Wires
 
 from enum import Enum
 
-from ..ui.console import ask_for_choice, display_instruction
 from ..ui.models import Answer
 
 
@@ -82,9 +81,9 @@ QUESTIONS_AND_ANSWERS = [
 ]
 
 
-def ask_questions():
+def ask_questions(ui):
     for question_label, answers in QUESTIONS_AND_ANSWERS:
-        yield ask_for_choice(question_label, answers)
+        yield ui.ask_for_choice(question_label, answers)
 
 
 def get_instruction(answer_values):
@@ -92,7 +91,7 @@ def get_instruction(answer_values):
     return INSTRUCTIONS[instruction_letter]
 
 
-def execute():
-    answer_values = tuple(ask_questions())
+def execute(ui):
+    answer_values = tuple(ask_questions(ui))
     instruction = get_instruction(answer_values)
-    display_instruction(instruction)
+    ui.display_instruction(instruction)

@@ -9,8 +9,6 @@ On the Subject of Who's on First
 
 from enum import Enum
 
-from ..ui.console import ask_for_text, display_instruction
-
 
 ButtonPosition = Enum('ButtonPosition', [
     'top_left',
@@ -86,22 +84,22 @@ BUTTON_LABELS_FORWARDS = {
 }
 
 
-def step1():
+def step1(ui):
     """Ask for the word on the display and return the position of the
     button to check out next.
     """
     question_label = 'What does the display say?'
-    display_word = normalize(ask_for_text(question_label))
+    display_word = normalize(ui.ask_for_text(question_label))
     return DISPLAY_VALUES_TO_BUTTON_POSITIONS.get(display_word)
 
 
-def step2(button_position):
+def step2(ui, button_position):
     """Ask for the label of the button at that position and list the
     potential labels of the button to push next, ordered by priority.
     """
     question_label = 'What does the button in the {} say?' \
                       .format(button_position.name.replace('_', ' ').upper())
-    button_label = normalize(ask_for_text(question_label))
+    button_label = normalize(ui.ask_for_text(question_label))
     return BUTTON_LABELS_FORWARDS.get(button_label)
 
 
@@ -116,13 +114,13 @@ def display_button_labels(labels):
         print('  ->', label)
 
 
-def execute():
-    button_position = step1()
+def execute(ui):
+    button_position = step1(ui)
     if not button_position:
-        display_instruction('Unknown display word!')
+        ui.display_instruction('Unknown display word!')
 
-    button_labels = step2(button_position)
+    button_labels = step2(ui, button_position)
     if not button_position:
-        display_instruction('Unknown button label!')
+        ui.display_instruction('Unknown button label!')
 
     display_button_labels(button_labels)

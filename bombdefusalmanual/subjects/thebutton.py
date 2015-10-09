@@ -9,7 +9,6 @@ On the Subject of The Button
 
 from enum import Enum
 
-from ..ui.console import ask_for_choice, display_instruction
 from ..ui.models import Answer
 
 
@@ -29,27 +28,27 @@ ButtonRelease = Enum('ButtonRelease', [
 ])
 
 
-def get_instruction():
-    button_color = ask_for_button_color()
-    button_label = ask_for_button_label()
+def get_instruction(ui):
+    button_color = ask_for_button_color(ui)
+    button_label = ask_for_button_label(ui)
 
     # Rule #1
     if (button_color is ButtonColor.blue) and (button_label is ButtonLabel.Abort):
-        return get_button_release_instruction()
+        return get_button_release_instruction(ui)
 
-    battery_count = ask_for_battery_count()
+    battery_count = ask_for_battery_count(ui)
 
     # Rule #2
     if (battery_count is not BatteryCount.one_or_less) and (button_label is ButtonLabel.Detonate):
-        return get_button_release_instruction()
+        return get_button_release_instruction(ui)
 
-    lit_indicator_label = ask_for_lit_indicator_label(IndicatorLabel.CAR)
+    lit_indicator_label = ask_for_lit_indicator_label(ui, IndicatorLabel.CAR)
 
     # Rule #3
     if (button_color is ButtonColor.white) and (lit_indicator_label is IndicatorLabel.CAR):
-        return get_button_release_instruction()
+        return get_button_release_instruction(ui)
 
-    lit_indicator_label = ask_for_lit_indicator_label(IndicatorLabel.FRK)
+    lit_indicator_label = ask_for_lit_indicator_label(ui, IndicatorLabel.FRK)
 
     # Rule #4
     if (battery_count is BatteryCount.more_than_two) and (lit_indicator_label is IndicatorLabel.FRK):
@@ -64,17 +63,17 @@ def get_instruction():
         return Release.immediately
 
     # Rule #7
-    return get_button_release_instruction()
+    return get_button_release_instruction(ui)
 
 
-def ask_for_button_color():
+def ask_for_button_color(ui):
     answers = [Answer(member, member.name) for member in ButtonColor]
-    return ask_for_choice('Which color does the button have?', answers)
+    return ui.ask_for_choice('Which color does the button have?', answers)
 
 
-def ask_for_button_label():
+def ask_for_button_label(ui):
     answers = list(generate_button_label_answers())
-    return ask_for_choice('What does the button say?', answers)
+    return ui.ask_for_choice('What does the button say?', answers)
 
 
 def generate_button_label_answers():
@@ -85,37 +84,37 @@ def generate_button_label_answers():
         yield Answer(member, label)
 
 
-def ask_for_battery_count():
+def ask_for_battery_count(ui):
     answers = [Answer(member, member.name) for member in BatteryCount]
-    return ask_for_choice('How many batteries are there?', answers)
+    return ui.ask_for_choice('How many batteries are there?', answers)
 
 
-def ask_for_lit_indicator_label(indicator_label):
+def ask_for_lit_indicator_label(ui, indicator_label):
     question_label = 'Is there a lit indicator labeled "{}"?' \
                      .format(indicator_label.name)
     answers = [Answer(member, member.name) for member in Exists]
-    value = ask_for_choice(question_label, answers)
+    value = ui.ask_for_choice(question_label, answers)
     return indicator_label.value if value is Exists.yes else None
 
 
-def get_button_release_instruction():
+def get_button_release_instruction(ui):
     mapping = {
         StripColor.blue: ButtonRelease.when_countdown_timer_contains_digit_4,
         StripColor.yellow: ButtonRelease.when_countdown_timer_contains_digit_5,
     }
     otherwise = ButtonRelease.when_countdown_timer_contains_digit_1
 
-    strip_color = ask_for_strip_color()
+    strip_color = ask_for_strip_color(ui)
     return mapping.get(strip_color, otherwise)
 
 
-def ask_for_strip_color():
+def ask_for_strip_color(ui):
     answers = [Answer(member, member.name) for member in StripColor]
-    return ask_for_choice(
+    return ui.ask_for_choice(
         'Which color does the strip to the right of the button have?',
         answers)
 
 
-def execute():
-    button_release = get_instruction()
-    display_instruction('Press button. Release {}.'.format(button_release))
+def execute(ui):
+    button_release = get_instruction(ui)
+    ui.display_instruction('Press button. Release {}.'.format(button_release))

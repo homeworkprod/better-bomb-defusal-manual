@@ -9,7 +9,7 @@
 
 from importlib import import_module
 
-from bombdefusalmanual.ui.console import ask_for_choice
+from bombdefusalmanual.ui.console import ConsoleUI
 from bombdefusalmanual.ui.models import Answer
 
 
@@ -22,8 +22,8 @@ ANSWERS = [
 ]
 
 
-def ask_for_subject():
-    return ask_for_choice('Which subject?', ANSWERS)
+def ask_for_subject(ui):
+    return ui.ask_for_choice('Which subject?', ANSWERS)
 
 
 def import_subject_module(name):
@@ -31,6 +31,7 @@ def import_subject_module(name):
 
 
 if __name__ == '__main__':
-    subject_name = ask_for_subject()
+    ui = ConsoleUI()
+    subject_name = ask_for_subject(ui)
     module = import_subject_module(subject_name)
-    module.execute()
+    module.execute(ui)
