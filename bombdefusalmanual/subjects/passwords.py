@@ -9,7 +9,8 @@ On the Subject of Passwords
 
 from string import ascii_lowercase
 
-from ..userinterface import Question, ask_for_input, display_question
+from ..userinterface import Question, ask_for_input, display_instruction, \
+    display_question
 
 
 PASSWORDS = frozenset([
@@ -25,10 +26,20 @@ PASSWORDS = frozenset([
 
 def ask_for_letters_in_first_position():
     letters = ask_for_letters_in_position('first')
-    matches = get_passwords_starting_with(letters)
+    matches = list(get_passwords_starting_with(letters))
+
+    if not matches:
+        display_instruction('No password matches!')
+        return
+
+    if len(matches) == 1:
+        display_instruction(matches[0])
+        return
+
     print()
+    print('  Multiple candidates:')
     for match in matches:
-        print(' ->', match)
+        print('  ->', match)
 
 
 def ask_for_letters_in_position(position_label):
