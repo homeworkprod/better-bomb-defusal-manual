@@ -16,10 +16,6 @@ def ask_for_text(question_label):
 
 
 def ask_for_choice(question_label, answers):
-    return ask_question(question_label, answers)
-
-
-def ask_question(question_label, answers):
     """Present a question to the user and return the value of the
     selected answer.
     """
