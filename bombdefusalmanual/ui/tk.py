@@ -27,7 +27,7 @@ class TkGUI(ConsoleUI):
     def ask_for_choice(self, question_label, choices, *, color_map=None):
         gui = ChoiceGUI(question_label, choices, color_map)
         gui.mainloop()
-        return gui.selected_choice_value
+        return gui.frame.selected_choice_value
 
 
 class BaseGUI(tk.Tk):
@@ -73,6 +73,18 @@ class ChoiceGUI(BaseGUI):
     def __init__(self, question_label, choices, color_map):
         super().__init__()
 
+        self.frame = ChoiceFrame(self, question_label, choices, color_map)
+        self.frame.grid(row=0, sticky=(N, W, E, S))
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
+
+
+class ChoiceFrame(ttk.Frame):
+
+    def __init__(self, parent, question_label, choices, color_map):
+        super().__init__(parent)
+
+        self.parent = parent
         self.selected_choice_value = None
 
         self.add_question_label(question_label)
@@ -99,7 +111,7 @@ class ChoiceGUI(BaseGUI):
 
     def set_selected_choice_and_close(self, selected_choice_value):
         self.selected_choice_value = selected_choice_value
-        self.destroy()
+        self.parent.destroy()
 
 
 def create_style(color_name):
