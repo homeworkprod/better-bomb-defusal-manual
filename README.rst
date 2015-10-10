@@ -9,7 +9,8 @@ An interactive implementation of (parts of) the "Bomb Defusal Manual"
 Requirements
 ------------
 
-- Python
+- Python 3.4+
+- Tkinter
 
 
 :Copyright: 2015 `Jochen Kupperschmidt <http://homework.nwsnet.de/>`_
