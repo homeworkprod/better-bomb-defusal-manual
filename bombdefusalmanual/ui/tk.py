@@ -22,7 +22,7 @@ class TkGUI(ConsoleUI):
     def ask_for_text(self, question_label):
         gui = TextGUI(question_label)
         gui.mainloop()
-        return gui.text.get()
+        return gui.frame.text.get()
 
     def ask_for_choice(self, question_label, choices, *, color_map=None):
         gui = ChoiceGUI(question_label, choices, color_map)
@@ -47,6 +47,19 @@ class TextGUI(BaseGUI):
     def __init__(self, question_label):
         super().__init__()
 
+        self.frame = TextFrame(self, question_label)
+        self.frame.grid(row=0, sticky=(N, W, E, S))
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
+
+
+class TextFrame(ttk.Frame):
+
+    def __init__(self, parent, question_label):
+        super().__init__(parent)
+
+        self.parent = parent
+
         self.add_question_label(question_label)
         self.add_text_entry()
 
@@ -65,7 +78,7 @@ class TextGUI(BaseGUI):
         self.rowconfigure(1, weight=1)
 
     def submit(self, event):
-        self.destroy()
+        self.parent.destroy()
 
 
 class ChoiceGUI(BaseGUI):
