@@ -115,14 +115,15 @@ def display_button_labels(labels):
 
 
 def execute(ui):
-    button_position = step1(ui)
-    if not button_position:
-        ui.display_instruction('Unknown display word!')
-        return
+    while True:
+        button_position = step1(ui)
+        if not button_position:
+            ui.display_instruction('Unknown display word!')
+            continue
 
-    button_labels = step2(ui, button_position)
-    if not button_labels:
-        ui.display_instruction('Unknown button label!')
-        return
+        button_labels = step2(ui, button_position)
+        if not button_labels:
+            ui.display_instruction('Unknown button label!')
+            continue
 
-    display_button_labels(button_labels)
+        display_button_labels(button_labels)

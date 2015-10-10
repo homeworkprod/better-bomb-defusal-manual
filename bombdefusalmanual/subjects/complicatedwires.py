@@ -92,6 +92,7 @@ def get_instruction(choice_values):
 
 
 def execute(ui):
-    choice_values = tuple(ask_questions(ui))
-    instruction = get_instruction(choice_values)
-    ui.display_instruction(instruction)
+    while True:
+        choice_values = tuple(ask_questions(ui))
+        instruction = get_instruction(choice_values)
+        ui.display_instruction(instruction)
