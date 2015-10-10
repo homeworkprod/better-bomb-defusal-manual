@@ -16,7 +16,6 @@ class ConsoleUI(object):
         display_question(question_label)
         return ask_for_input()
 
-
     def ask_for_choice(self, question_label, choices, *, color_map=None):
         """Present a question to the user and return the value of the
         selected choice.
@@ -31,7 +30,6 @@ class ConsoleUI(object):
         selected_index = int(selection_input) - 1
         choice = choices[selected_index]
         return choice.value
-
 
     def display_instruction(self, text):
         print('\n  => {} <=\n'.format(text))
