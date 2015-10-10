@@ -54,7 +54,6 @@ def import_subject_module(name):
 
 def provide_subjects(ui_class):
     subject_name = ask_for_subject(ui_class())
-    print('after subject name')
 
     module = import_subject_module(subject_name)
 
