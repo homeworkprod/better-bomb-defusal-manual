@@ -52,7 +52,7 @@ def get_instruction(ui):
 
     # Rule #4
     if (battery_count is BatteryCount.more_than_two) and (lit_indicator_label is IndicatorLabel.FRK):
-        return Release.immediately
+        return ButtonRelease.immediately
 
     # Rule #5
     if (button_color is ButtonColor.yellow):
@@ -60,7 +60,7 @@ def get_instruction(ui):
 
     # Rule #6
     if (button_color is ButtonColor.red) and (button_label is ButtonLabel.Hold):
-        return Release.immediately
+        return ButtonRelease.immediately
 
     # Rule #7
     return get_button_release_instruction(ui)
