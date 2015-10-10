@@ -33,7 +33,7 @@ class TkGUI(ConsoleUI):
 class BaseGUI(tk.Tk):
 
     def __init__(self):
-        tk.Tk.__init__(self)
+        super().__init__()
 
         self.bind('<Escape>', self.exit)
 
@@ -44,7 +44,7 @@ class BaseGUI(tk.Tk):
 class TextGUI(BaseGUI):
 
     def __init__(self, question_label):
-        BaseGUI.__init__(self)
+        super().__init__()
 
         self.add_question_label(question_label)
         self.add_text_entry()
@@ -70,7 +70,7 @@ class TextGUI(BaseGUI):
 class ChoiceGUI(BaseGUI):
 
     def __init__(self, question_label, choices, color_map):
-        BaseGUI.__init__(self)
+        super().__init__()
 
         self.selected_choice_value = None
 
@@ -114,7 +114,7 @@ class ChoiceButton(ttk.Button):
 
     def __init__(self, *args, **kwargs):
         self.value = kwargs.pop('value')
-        ttk.Button.__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.configure(command=self.set_selected_choice)
 
     def set_selected_choice(self):
