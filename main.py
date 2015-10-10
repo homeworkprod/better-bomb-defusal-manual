@@ -56,7 +56,12 @@ def provide_subjects(ui):
     subject_name = ask_for_subject(ui)
 
     module = import_subject_module(subject_name)
-    module.execute(ui)
+
+    try:
+        module.execute(ui)
+    except SystemExit:
+        # Close subject and show overview.
+        pass
 
 
 if __name__ == '__main__':

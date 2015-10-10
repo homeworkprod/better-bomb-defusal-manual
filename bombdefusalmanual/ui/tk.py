@@ -38,6 +38,7 @@ class BaseGUI(tk.Tk):
         self.bind('<Escape>', self.exit)
 
     def exit(self, event):
+        self.destroy()
         sys.exit()
 
 
