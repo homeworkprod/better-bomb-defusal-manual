@@ -36,12 +36,12 @@ def parse_args():
     return parser.parse_args()
 
 
-def get_ui(use_gui):
+def get_ui_class(use_gui):
     if use_gui:
         from bombdefusalmanual.ui.tk import TkGUI
-        return TkGUI()
+        return TkGUI
     else:
-        return ConsoleUI()
+        return ConsoleUI
 
 
 def ask_for_subject(ui):
@@ -52,13 +52,14 @@ def import_subject_module(name):
     return import_module('bombdefusalmanual.subjects.{}'.format(name))
 
 
-def provide_subjects(ui):
-    subject_name = ask_for_subject(ui)
+def provide_subjects(ui_class):
+    subject_name = ask_for_subject(ui_class())
+    print('after subject name')
 
     module = import_subject_module(subject_name)
 
     try:
-        module.execute(ui)
+        module.execute(ui_class())
     except SystemExit:
         # Close subject and show overview.
         pass
@@ -66,7 +67,7 @@ def provide_subjects(ui):
 
 if __name__ == '__main__':
     args = parse_args()
-    ui = get_ui(args.use_gui)
+    ui_class = get_ui_class(args.use_gui)
 
     while True:
-        provide_subjects(ui)
+        provide_subjects(ui_class)
