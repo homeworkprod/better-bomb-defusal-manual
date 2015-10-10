@@ -20,12 +20,16 @@ from .console import ConsoleUI
 class TkGUI(ConsoleUI):
 
     def ask_for_text(self, question_label):
-        gui = TextGUI(question_label)
+        gui = BaseGUI()
+        frame = TextFrame(gui, question_label)
+        gui.set_frame(frame)
         gui.mainloop()
         return gui.frame.text.get()
 
     def ask_for_choice(self, question_label, choices, *, color_map=None):
-        gui = ChoiceGUI(question_label, choices, color_map)
+        gui = BaseGUI()
+        frame = ChoiceFrame(gui, question_label, choices, color_map)
+        gui.set_frame(frame)
         gui.mainloop()
         return gui.frame.selected_choice_value
 
@@ -41,13 +45,8 @@ class BaseGUI(tk.Tk):
         self.destroy()
         sys.exit()
 
-
-class TextGUI(BaseGUI):
-
-    def __init__(self, question_label):
-        super().__init__()
-
-        self.frame = TextFrame(self, question_label)
+    def set_frame(self, frame):
+        self.frame = frame
         self.frame.grid(row=0, sticky=(N, W, E, S))
         self.rowconfigure(0, weight=1)
         self.columnconfigure(0, weight=1)
@@ -79,17 +78,6 @@ class TextFrame(ttk.Frame):
 
     def submit(self, event):
         self.parent.destroy()
-
-
-class ChoiceGUI(BaseGUI):
-
-    def __init__(self, question_label, choices, color_map):
-        super().__init__()
-
-        self.frame = ChoiceFrame(self, question_label, choices, color_map)
-        self.frame.grid(row=0, sticky=(N, W, E, S))
-        self.rowconfigure(0, weight=1)
-        self.columnconfigure(0, weight=1)
 
 
 class ChoiceFrame(ttk.Frame):
