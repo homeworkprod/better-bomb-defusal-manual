@@ -9,11 +9,12 @@ Based on Tk/Tkinter.
 :License: MIT, see LICENSE for details.
 """
 
-from .console import ConsoleUI
-
+import sys
 import tkinter as tk
 from tkinter import ttk
 from tkinter import E, N, S, W
+
+from .console import ConsoleUI
 
 
 class TkGUI(ConsoleUI):
@@ -29,10 +30,21 @@ class TkGUI(ConsoleUI):
         return gui.selected_choice_value
 
 
-class TextGUI(tk.Tk):
+class BaseGUI(tk.Tk):
+
+    def __init__(self):
+        tk.Tk.__init__(self)
+
+        self.bind('<Escape>', self.exit)
+
+    def exit(self, event):
+        sys.exit()
+
+
+class TextGUI(BaseGUI):
 
     def __init__(self, question_label):
-        tk.Tk.__init__(self)
+        BaseGUI.__init__(self)
 
         self.add_question_label(question_label)
         self.add_text_entry()
@@ -55,10 +67,10 @@ class TextGUI(tk.Tk):
         self.destroy()
 
 
-class ChoiceGUI(tk.Tk):
+class ChoiceGUI(BaseGUI):
 
     def __init__(self, question_label, choices, color_map):
-        tk.Tk.__init__(self)
+        BaseGUI.__init__(self)
 
         self.selected_choice_value = None
 
