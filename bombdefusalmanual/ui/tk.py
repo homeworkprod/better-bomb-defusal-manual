@@ -18,10 +18,41 @@ from tkinter import E, N, S, W
 
 class TkGUI(ConsoleUI):
 
+    def ask_for_text(self, question_label):
+        gui = TextGUI(question_label)
+        gui.mainloop()
+        return gui.text.get()
+
     def ask_for_choice(self, question_label, choices, *, color_map=None):
         gui = ChoiceGUI(question_label, choices, color_map)
         gui.mainloop()
         return gui.selected_choice_value
+
+
+class TextGUI(tk.Tk):
+
+    def __init__(self, question_label):
+        tk.Tk.__init__(self)
+
+        self.add_question_label(question_label)
+        self.add_text_entry()
+
+    def add_question_label(self, question_label):
+        label = ttk.Label(self, text=question_label)
+        label.grid(row=0, sticky=(N, W, E, S))
+        self.rowconfigure(0, weight=1)
+        self.columnconfigure(0, weight=1)
+
+    def add_text_entry(self):
+        self.text = tk.StringVar()
+        entry = tk.Entry(self, textvariable=self.text)
+        entry.grid(row=1, sticky=(N, W, E, S))
+        entry.bind('<Return>', self.submit)
+        entry.focus()
+        self.rowconfigure(1, weight=1)
+
+    def submit(self, event):
+        self.destroy()
 
 
 class ChoiceGUI(tk.Tk):
