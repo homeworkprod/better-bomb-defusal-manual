@@ -15,11 +15,11 @@ from bombdefusalmanual.ui.models import Choice
 
 
 CHOICES = [
-    Choice('thebutton', 'The Button'),
-    Choice('complicatedwires', 'Complicated Wires'),
-    Choice('morsecode', 'Morse Code'),
-    Choice('passwords', 'Passwords'),
-    Choice('whosonfirst', 'Who\'s on First'),
+    Choice('thebutton'       , 'The Button'       ), # page 6
+    Choice('whosonfirst'     , 'Who\'s on First'  ), # pages 9-10
+    Choice('morsecode'       , 'Morse Code'       ), # page 12
+    Choice('complicatedwires', 'Complicated Wires'), # page 13
+    Choice('passwords'       , 'Passwords'        ), # page 16
 ]
 
 
