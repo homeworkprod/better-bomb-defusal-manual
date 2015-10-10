@@ -10,9 +10,9 @@ On the Subject of Keypads
 COPYRIGHT_SIGN                                   = '\u00A9'
 PILCROW_SIGN                                     = '\u00B6'
 INVERTED_QUESTION_MARK                           = '\u00BF'
+LATIN_SMALL_LETTER_LAMBDA_WITH_STROKE            = '\u019B'
 GREEK_CAPITAL_LETTER_PSI                         = '\u03A8'
 GREEK_CAPITAL_LETTER_OMEGA                       = '\u03A9'
-GREEK_SMALL_LETTER_LAMDA                         = '\u03BB'  # This is not the correct one, it lacks a small line.
 GREEK_KAI_SYMBOL                                 = '\u03D7'
 GREEK_LETTER_ARCHAIC_KOPPA                       = '\u03D8'
 GREEK_LETTER_KOPPA                               = '\u03DE'
@@ -41,7 +41,7 @@ COLUMNS = [
         # column 1
         GREEK_LETTER_ARCHAIC_KOPPA,
         CYRILLIC_CAPITAL_LETTER_LITTLE_YUS,
-        GREEK_SMALL_LETTER_LAMDA,
+        LATIN_SMALL_LETTER_LAMBDA_WITH_STROKE,
         GREEK_LETTER_KOPPA,
         CYRILLIC_CAPITAL_LETTER_IOTIFIED_BIG_YUS,
         GREEK_KAI_SYMBOL,
@@ -64,7 +64,7 @@ COLUMNS = [
         CYRILLIC_CAPITAL_LETTER_ABKHASIAN_HA,
         CYRILLIC_CAPITAL_LETTER_ZHE_WITH_DESCENDER,
         CYRILLIC_CAPITAL_LETTER_KOMI_DZJE,
-        GREEK_SMALL_LETTER_LAMDA,
+        LATIN_SMALL_LETTER_LAMBDA_WITH_STROKE,
         WHITE_STAR,
     ],
     [
