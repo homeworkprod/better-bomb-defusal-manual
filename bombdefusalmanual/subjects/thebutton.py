@@ -56,7 +56,7 @@ def get_instruction(ui):
 
     # Rule #5
     if (button_color is ButtonColor.yellow):
-        return get_button_release_instruction()
+        return get_button_release_instruction(ui)
 
     # Rule #6
     if (button_color is ButtonColor.red) and (button_label is ButtonLabel.Hold):
