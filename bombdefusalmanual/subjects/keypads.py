@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+
+"""
+On the Subject of Keypads
+
+:Copyright: 2015 Jochen Kupperschmidt
+:License: MIT, see LICENSE for details.
+"""
+
+COPYRIGHT_SIGN                                   = '\u00A9'
+PILCROW_SIGN                                     = '\u00B6'
+INVERTED_QUESTION_MARK                           = '\u00BF'
+GREEK_CAPITAL_LETTER_PSI                         = '\u03A8'
+GREEK_CAPITAL_LETTER_OMEGA                       = '\u03A9'
+GREEK_SMALL_LETTER_LAMDA                         = '\u03BB'  # This is not the correct one, it lacks a small line.
+GREEK_KAI_SYMBOL                                 = '\u03D7'
+GREEK_LETTER_ARCHAIC_KOPPA                       = '\u03D8'
+GREEK_LETTER_KOPPA                               = '\u03DE'
+COPTIC_CAPITAL_LETTER_SHIMA                      = '\u03EC'
+GREEK_CAPITAL_DOTTED_LUNATE_SIGMASYMBOL          = '\u03FE'
+GREEK_CAPITAL_REVERSED_DOTTED_LUNATESIGMA_SYMBOL = '\u03FF'
+CYRILLIC_CAPITAL_LETTER_YAT                      = '\u0462'
+CYRILLIC_CAPITAL_LETTER_LITTLE_YUS               = '\u0466'
+CYRILLIC_CAPITAL_LETTER_IOTIFIED_BIG_YUS         = '\u046C'
+CYRILLIC_CAPITAL_LETTER_KSI                      = '\u046E'
+CYRILLIC_CAPITAL_LETTER_OMEGA_WITH_TITLO         = '\u047C'
+CYRILLIC_THOUSANDS_SIGN                          = '\u0482'
+CYRILLIC_CAPITAL_LETTER_SHORT_I_WITH_TAIL        = '\u048A'
+CYRILLIC_CAPITAL_LETTER_ZHE_WITH_DESCENDER       = '\u0496'
+CYRILLIC_CAPITAL_LETTER_ABKHASIAN_HA             = '\u04A8'
+CYRILLIC_SMALL_LIGATURE_A_IE                     = '\u04D5'
+CYRILLIC_CAPITAL_LETTER_E_WITH_DIAERESIS         = '\u04EC'
+CYRILLIC_CAPITAL_LETTER_KOMI_DZJE                = '\u0506'
+ARABIC_LETTER_TEH_WITH_RING                      = '\u067C'
+BLACK_STAR                                       = '\u2605'
+WHITE_STAR                                       = '\u2606'
+
+
+COLUMNS = [
+    [
+        # column 1
+        GREEK_LETTER_ARCHAIC_KOPPA,
+        CYRILLIC_CAPITAL_LETTER_LITTLE_YUS,
+        GREEK_SMALL_LETTER_LAMDA,
+        GREEK_LETTER_KOPPA,
+        CYRILLIC_CAPITAL_LETTER_IOTIFIED_BIG_YUS,
+        GREEK_KAI_SYMBOL,
+        GREEK_CAPITAL_REVERSED_DOTTED_LUNATESIGMA_SYMBOL,
+    ],
+    [
+        # column 2
+        CYRILLIC_CAPITAL_LETTER_E_WITH_DIAERESIS,
+        GREEK_LETTER_ARCHAIC_KOPPA,
+        GREEK_CAPITAL_REVERSED_DOTTED_LUNATESIGMA_SYMBOL,
+        CYRILLIC_CAPITAL_LETTER_ABKHASIAN_HA,
+        WHITE_STAR,
+        GREEK_KAI_SYMBOL,
+        INVERTED_QUESTION_MARK,
+    ],
+    [
+        # column 3
+        COPYRIGHT_SIGN,
+        CYRILLIC_CAPITAL_LETTER_OMEGA_WITH_TITLO,
+        CYRILLIC_CAPITAL_LETTER_ABKHASIAN_HA,
+        CYRILLIC_CAPITAL_LETTER_ZHE_WITH_DESCENDER,
+        CYRILLIC_CAPITAL_LETTER_KOMI_DZJE,
+        GREEK_SMALL_LETTER_LAMDA,
+        WHITE_STAR,
+    ],
+    [
+        # column 4
+        COPTIC_CAPITAL_LETTER_SHIMA,
+        PILCROW_SIGN,
+        CYRILLIC_CAPITAL_LETTER_YAT,
+        CYRILLIC_CAPITAL_LETTER_IOTIFIED_BIG_YUS,
+        CYRILLIC_CAPITAL_LETTER_ZHE_WITH_DESCENDER,
+        INVERTED_QUESTION_MARK,
+        ARABIC_LETTER_TEH_WITH_RING,
+    ],
+    [
+        # column 5
+        GREEK_CAPITAL_LETTER_PSI,
+        ARABIC_LETTER_TEH_WITH_RING,
+        CYRILLIC_CAPITAL_LETTER_YAT,
+        GREEK_CAPITAL_DOTTED_LUNATE_SIGMASYMBOL,
+        PILCROW_SIGN,
+        CYRILLIC_CAPITAL_LETTER_KSI,
+        BLACK_STAR,
+    ],
+    [
+        # column 6
+        COPTIC_CAPITAL_LETTER_SHIMA,
+        CYRILLIC_CAPITAL_LETTER_E_WITH_DIAERESIS,
+        CYRILLIC_THOUSANDS_SIGN,
+        CYRILLIC_SMALL_LIGATURE_A_IE,
+        GREEK_CAPITAL_LETTER_PSI,
+        CYRILLIC_CAPITAL_LETTER_SHORT_I_WITH_TAIL,
+        GREEK_CAPITAL_LETTER_OMEGA,
+    ],
+]
