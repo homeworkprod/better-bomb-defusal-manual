@@ -68,7 +68,9 @@ def get_instruction(ui):
 
 def ask_for_button_color(ui):
     choices = [Choice(member, member.name) for member in ButtonColor]
-    return ui.ask_for_choice('Which color does the button have?', choices)
+    color_map = create_color_map(ButtonColor, ButtonColor.other)
+    return ui.ask_for_choice('Which color does the button have?', choices,
+                             color_map=color_map)
 
 
 def ask_for_button_label(ui):
@@ -110,9 +112,14 @@ def get_button_release_instruction(ui):
 
 def ask_for_strip_color(ui):
     choices = [Choice(member, member.name) for member in StripColor]
+    color_map = create_color_map(StripColor, StripColor.other)
     return ui.ask_for_choice(
         'Which color does the strip to the right of the button have?',
-        choices)
+        choices, color_map=color_map)
+
+
+def create_color_map(color_enum, non_color_member):
+    return {x: x.name for x in color_enum if x is not non_color_member}
 
 
 def execute(ui):

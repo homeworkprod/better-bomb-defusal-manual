@@ -17,7 +17,7 @@ class ConsoleUI(object):
         return ask_for_input()
 
 
-    def ask_for_choice(self, question_label, choices):
+    def ask_for_choice(self, question_label, choices, *, color_map=None):
         """Present a question to the user and return the value of the
         selected choice.
         """
