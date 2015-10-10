@@ -9,7 +9,7 @@ On the Subject of The Button
 
 from enum import Enum
 
-from ..ui.models import Answer
+from ..ui.models import Choice
 
 
 ButtonColor = Enum('ButtonColor', 'blue white yellow red other')
@@ -67,33 +67,33 @@ def get_instruction(ui):
 
 
 def ask_for_button_color(ui):
-    answers = [Answer(member, member.name) for member in ButtonColor]
-    return ui.ask_for_choice('Which color does the button have?', answers)
+    choices = [Choice(member, member.name) for member in ButtonColor]
+    return ui.ask_for_choice('Which color does the button have?', choices)
 
 
 def ask_for_button_label(ui):
-    answers = list(generate_button_label_answers())
-    return ui.ask_for_choice('What does the button say?', answers)
+    choices = list(generate_button_label_choices())
+    return ui.ask_for_choice('What does the button say?', choices)
 
 
-def generate_button_label_answers():
+def generate_button_label_choices():
     for member in ButtonLabel:
         label = member.name
         if member is not ButtonLabel.other:
             label = '"{}"'.format(label)
-        yield Answer(member, label)
+        yield Choice(member, label)
 
 
 def ask_for_battery_count(ui):
-    answers = [Answer(member, member.name) for member in BatteryCount]
-    return ui.ask_for_choice('How many batteries are there?', answers)
+    choices = [Choice(member, member.name) for member in BatteryCount]
+    return ui.ask_for_choice('How many batteries are there?', choices)
 
 
 def ask_for_lit_indicator_label(ui, indicator_label):
     question_label = 'Is there a lit indicator labeled "{}"?' \
                      .format(indicator_label.name)
-    answers = [Answer(member, member.name) for member in Exists]
-    value = ui.ask_for_choice(question_label, answers)
+    choices = [Choice(member, member.name) for member in Exists]
+    value = ui.ask_for_choice(question_label, choices)
     return indicator_label.value if value is Exists.yes else None
 
 
@@ -109,10 +109,10 @@ def get_button_release_instruction(ui):
 
 
 def ask_for_strip_color(ui):
-    answers = [Answer(member, member.name) for member in StripColor]
+    choices = [Choice(member, member.name) for member in StripColor]
     return ui.ask_for_choice(
         'Which color does the strip to the right of the button have?',
-        answers)
+        choices)
 
 
 def execute(ui):

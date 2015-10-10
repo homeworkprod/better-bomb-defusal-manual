@@ -11,15 +11,15 @@ from argparse import ArgumentParser
 from importlib import import_module
 
 from bombdefusalmanual.ui.console import ConsoleUI
-from bombdefusalmanual.ui.models import Answer
+from bombdefusalmanual.ui.models import Choice
 
 
-ANSWERS = [
-    Answer('thebutton', 'The Button'),
-    Answer('complicatedwires', 'Complicated Wires'),
-    Answer('morsecode', 'Morse Code'),
-    Answer('passwords', 'Passwords'),
-    Answer('whosonfirst', 'Who\'s on First'),
+CHOICES = [
+    Choice('thebutton', 'The Button'),
+    Choice('complicatedwires', 'Complicated Wires'),
+    Choice('morsecode', 'Morse Code'),
+    Choice('passwords', 'Passwords'),
+    Choice('whosonfirst', 'Who\'s on First'),
 ]
 
 
@@ -45,7 +45,7 @@ def get_ui(use_gui):
 
 
 def ask_for_subject(ui):
-    return ui.ask_for_choice('Which subject?', ANSWERS)
+    return ui.ask_for_choice('Which subject?', CHOICES)
 
 
 def import_subject_module(name):

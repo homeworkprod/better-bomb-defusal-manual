@@ -9,7 +9,7 @@ On the Subject of Complicated Wires
 
 from enum import Enum
 
-from ..ui.models import Answer
+from ..ui.models import Choice
 
 
 LED = Enum('LED', 'on off')
@@ -49,49 +49,49 @@ COMBINATORICS = {
 }
 
 
-QUESTIONS_AND_ANSWERS = [
+QUESTIONS_AND_CHOICES = [
     (
         'Is the LED above the wire on?',
         [
-            Answer(LED.on, 'yes'),
-            Answer(LED.off, 'no'),
+            Choice(LED.on, 'yes'),
+            Choice(LED.off, 'no'),
         ],
     ),
     (
         'Does the wire have red coloring?',
         [
-            Answer(Red.yes, 'yes'),
-            Answer(Red.no, 'no'),
+            Choice(Red.yes, 'yes'),
+            Choice(Red.no, 'no'),
         ],
     ),
     (
         'Does the wire have blue coloring?',
         [
-            Answer(Blue.yes, 'yes'),
-            Answer(Blue.no, 'no'),
+            Choice(Blue.yes, 'yes'),
+            Choice(Blue.no, 'no'),
         ],
     ),
     (
         'Is a star symbol below the wire?',
         [
-            Answer(Star.yes, 'yes'),
-            Answer(Star.no, 'no'),
+            Choice(Star.yes, 'yes'),
+            Choice(Star.no, 'no'),
         ],
     ),
 ]
 
 
 def ask_questions(ui):
-    for question_label, answers in QUESTIONS_AND_ANSWERS:
-        yield ui.ask_for_choice(question_label, answers)
+    for question_label, choices in QUESTIONS_AND_CHOICES:
+        yield ui.ask_for_choice(question_label, choices)
 
 
-def get_instruction(answer_values):
-    instruction_letter = COMBINATORICS[answer_values]
+def get_instruction(choice_values):
+    instruction_letter = COMBINATORICS[choice_values]
     return INSTRUCTIONS[instruction_letter]
 
 
 def execute(ui):
-    answer_values = tuple(ask_questions(ui))
-    instruction = get_instruction(answer_values)
+    choice_values = tuple(ask_questions(ui))
+    instruction = get_instruction(choice_values)
     ui.display_instruction(instruction)

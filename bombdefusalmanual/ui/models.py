@@ -10,4 +10,4 @@ Models to exchange information with a user.
 from collections import namedtuple
 
 
-Answer = namedtuple('Answer', 'value label')
+Choice = namedtuple('Choice', 'value label')
