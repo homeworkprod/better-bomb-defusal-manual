@@ -52,11 +52,16 @@ def import_subject_module(name):
     return import_module('bombdefusalmanual.subjects.{}'.format(name))
 
 
-if __name__ == '__main__':
-    args = parse_args()
-    ui = get_ui(args.use_gui)
-
+def provide_subjects(ui):
     subject_name = ask_for_subject(ui)
 
     module = import_subject_module(subject_name)
     module.execute(ui)
+
+
+if __name__ == '__main__':
+    args = parse_args()
+    ui = get_ui(args.use_gui)
+
+    while True:
+        provide_subjects(ui)
