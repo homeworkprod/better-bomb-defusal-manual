@@ -23,17 +23,17 @@ class TkGUI(ConsoleUI):
         def create_frame(parent):
             return TextFrame(parent, question_label)
 
-        frame = self._run_frame(create_frame)
+        frame = self.run_frame(create_frame)
         return frame.text.get()
 
     def ask_for_choice(self, question_label, choices, *, color_map=None):
         def create_frame(parent):
             return ChoiceFrame(parent, question_label, choices, color_map)
 
-        frame = self._run_frame(create_frame)
+        frame = self.run_frame(create_frame)
         return frame.selected_choice_value
 
-    def _run_frame(self, create_frame):
+    def run_frame(self, create_frame):
         gui = BaseGUI()
         frame = create_frame(gui)
         gui.set_frame(frame)

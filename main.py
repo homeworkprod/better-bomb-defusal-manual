@@ -16,6 +16,7 @@ from bombdefusalmanual.ui.models import Choice
 
 CHOICES = [
     Choice('thebutton'       , 'The Button'       ), # page 6
+    Choice('keypads'         , 'Keypads'          ), # page 7
     Choice('whosonfirst'     , 'Who\'s on First'  ), # pages 9-10
     Choice('morsecode'       , 'Morse Code'       ), # page 12
     Choice('complicatedwires', 'Complicated Wires'), # page 13
