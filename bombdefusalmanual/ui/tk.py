@@ -20,18 +20,25 @@ from .console import ConsoleUI
 class TkGUI(ConsoleUI):
 
     def ask_for_text(self, question_label):
-        gui = BaseGUI()
-        frame = TextFrame(gui, question_label)
-        gui.set_frame(frame)
-        gui.mainloop()
-        return gui.frame.text.get()
+        def create_frame(parent):
+            return TextFrame(parent, question_label)
+
+        frame = self._run_frame(create_frame)
+        return frame.text.get()
 
     def ask_for_choice(self, question_label, choices, *, color_map=None):
+        def create_frame(parent):
+            return ChoiceFrame(parent, question_label, choices, color_map)
+
+        frame = self._run_frame(create_frame)
+        return frame.selected_choice_value
+
+    def _run_frame(self, create_frame):
         gui = BaseGUI()
-        frame = ChoiceFrame(gui, question_label, choices, color_map)
+        frame = create_frame(gui)
         gui.set_frame(frame)
         gui.mainloop()
-        return gui.frame.selected_choice_value
+        return frame
 
 
 class BaseGUI(tk.Tk):
