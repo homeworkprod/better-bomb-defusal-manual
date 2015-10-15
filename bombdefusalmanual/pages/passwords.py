@@ -7,11 +7,17 @@ On the Subject of Passwords
 :License: MIT, see LICENSE for details.
 """
 
-from itertools import chain
+from itertools import chain, groupby
 from operator import itemgetter
 
 from ..subjects.passwords import PASSWORDS
 from ..templating import render_template
+
+
+def group_passwords_by_first_letter():
+    sorted_passwords = sorted(PASSWORDS)
+    grouped = groupby(sorted_passwords, key=itemgetter(0))
+    return [list(v) for k, v in grouped]
 
 
 def get_letters_by_position():
@@ -30,11 +36,11 @@ def get_unique_letters(letters_by_position):
 
 
 def render_page():
-    sorted_passwords = sorted(PASSWORDS)
+    passwords_by_first_letter = group_passwords_by_first_letter()
     letters_by_position = get_letters_by_position()
     unique_letters = get_unique_letters(letters_by_position)
 
     return render_template('passwords',
-                           passwords=sorted_passwords,
+                           passwords_by_first_letter=passwords_by_first_letter,
                            letters_by_position=letters_by_position,
                            unique_letters=unique_letters)
