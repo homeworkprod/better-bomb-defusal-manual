@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8"/>
+    <title>{{ title }}</title>
+{% block head %}{% endblock %}
+  </head>
+  <body>
+
+    <article>
+      <h1>{{ title }}</h1>
+{% block content %}{% endblock %}
+    </article>
+
+    <footer>
+      <small>
+        <p>Created by <a href="http://homework.nwsnet.de/">Jochen Kupperschmidt</a></p>
+      </small>
+    </footer>
+
+  </body>
+</html>
