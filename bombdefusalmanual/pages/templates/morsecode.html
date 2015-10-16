@@ -30,7 +30,7 @@
           {%- endfor -%}
         </td>
         <td><kbd>{{ word }}</kbd></td>
-        <td><kbd>{{ frequency }}</kbd></td>
+        <td>{{ '%.3f'|format(frequency / 1000) }} MHz</td>
       </tr>
       {%- endfor %}
     </tbody>
