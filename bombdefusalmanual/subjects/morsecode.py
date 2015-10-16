@@ -41,6 +41,30 @@ MORSE_CODE_TO_CHARACTERS = {
 }
 
 
+CHARACTERS_TO_MORSE_CODE = {char: code for code, char
+                            in MORSE_CODE_TO_CHARACTERS.items()}
+
+
+WORDS_TO_FREQUENCIES = {
+    'shell':  3505,
+    'halls':  3515,
+    'slick':  3522,
+    'trick':  3532,
+    'boxes':  3535,
+    'leaks':  3542,
+    'strobe': 3545,
+    'bistro': 3552,
+    'flick':  3555,
+    'bombs':  3565,
+    'break':  3572,
+    'brick':  3575,
+    'steak':  3582,
+    'sting':  3592,
+    'vector': 3595,
+    'beats':  3600,
+}
+
+
 def ask_for_and_translate_morse_code(ui):
     while True:
         code = ask_for_morse_code(ui)

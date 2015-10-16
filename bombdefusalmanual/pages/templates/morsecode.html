@@ -1,0 +1,38 @@
+{% extends '_base.html' %}
+
+{% set title = 'On the Subject of Morse Code' %}
+
+{% block head %}
+  <style>
+    .delimiter {
+      opacity: 0.3;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Word</th>
+        <th>Frequency</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for codes, word, frequency in codes_words_frequencies %}
+      <tr>
+        <td>
+          {%- for code in codes %}
+          {%- if not loop.first %} <span class="delimiter">|</span> {% endif -%}
+          <kbd>{{ code }}</kbd>
+          {%- endfor -%}
+        </td>
+        <td><kbd>{{ word }}</kbd></td>
+        <td><kbd>{{ frequency }}</kbd></td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+{% endblock %}
