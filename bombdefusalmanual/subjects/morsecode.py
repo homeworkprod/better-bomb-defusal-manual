@@ -11,7 +11,7 @@ On the Subject of Morse Code
 MORSE_CODE_SYMBOLS = frozenset('.-')
 
 
-MORSE_CODE_TO_LETTERS = {
+MORSE_CODE_TO_CHARACTERS = {
     '.-':   'a',
     '-...': 'b',
     '-.-.': 'c',
@@ -47,9 +47,9 @@ def ask_for_and_translate_morse_code(ui):
         if not code:
             return
 
-        letter = MORSE_CODE_TO_LETTERS.get(code)
-        if letter:
-            ui.display_instruction('"{}" ({})'.format(letter, code))
+        char = MORSE_CODE_TO_CHARACTERS.get(code)
+        if char:
+            ui.display_instruction('"{}" ({})'.format(char, code))
         else:
             ui.display_instruction('unknown ({})'.format(code))
 
