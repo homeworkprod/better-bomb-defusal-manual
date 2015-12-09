@@ -7,9 +7,41 @@
 :License: MIT, see LICENSE for details.
 """
 
-from bombdefusalmanual.pages.passwords import render_page
+from pathlib import Path
+import sys
+
+from bombdefusalmanual.pages import morsecode
+from bombdefusalmanual.pages import passwords
+
+
+PAGE_MODULES = [
+    morsecode,
+    passwords,
+]
+
+BUILD_PATH = Path('./build')
+
+
+def create_build_path(path):
+    try:
+        path.mkdir()
+    except FileExistsError:
+        sys.stderr.write(
+            'Build path already exists, not generating pages: {}\n' \
+                .format(path))
+        sys.exit(1)
+
+
+def render_pages(path, page_modules):
+    for module in page_modules:
+        name = module.__name__.rpartition('.')[-1]
+        output_filename = name + '.html'
+
+        html = module.render_page()
+
+        path.joinpath(output_filename).write_text(html, 'utf-8')
 
 
 if __name__ == '__main__':
-    page = render_page()
-    print(page)
+    create_build_path(BUILD_PATH)
+    render_pages(BUILD_PATH, PAGE_MODULES)
