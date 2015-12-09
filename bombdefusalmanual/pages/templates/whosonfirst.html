@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+
+{% set title = 'On the Subject of Who\'s on First' %}
+
+{% block head %}
+  <style>
+    .button-position {
+      font-size: 1.1em;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <table>
+    <thead>
+      <tr>
+        <th>Display</th>
+        <th>Button Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for display_value, button_position in display_values_to_button_positions|dictsort %}
+      <tr>
+        <td><kbd>{{ display_value }}</kbd></td>
+        <td class="button-position">{{ button_position }}</td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+{% endblock %}

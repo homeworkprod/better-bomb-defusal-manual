@@ -12,11 +12,13 @@ import sys
 
 from bombdefusalmanual.pages import morsecode
 from bombdefusalmanual.pages import passwords
+from bombdefusalmanual.pages import whosonfirst
 
 
 PAGE_MODULES = [
     morsecode,
     passwords,
+    whosonfirst,
 ]
 
 BUILD_PATH = Path('./build')
