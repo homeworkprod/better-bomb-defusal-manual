@@ -38,14 +38,14 @@
     <thead>
       <tr>
         <th>Seen Button</th>
-        <th>Button to Press</th>
+        <th>Button to Push</th>
       </tr>
     </thead>
     <tbody>
-      {%- for label_of_seen_button, labels_of_buttons_to_press in button_labels_forwards|dictsort %}
+      {%- for label_of_seen_button, labels_of_buttons_to_push in button_labels_forwards|dictsort %}
       <tr>
         <td class="key"><kbd>{{ label_of_seen_button }}</kbd></td>
-        <td><kbd>{{ labels_of_buttons_to_press|join(', ') }}</kbd></td>
+        <td><kbd>{{ labels_of_buttons_to_push|join(', ') }}</kbd></td>
       </tr>
       {%- endfor %}
     </tbody>
