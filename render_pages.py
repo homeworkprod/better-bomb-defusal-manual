@@ -28,7 +28,7 @@ BUILD_PATH = Path('./build')
 
 def create_build_path(path):
     try:
-        path.mkdir()
+        path.mkdir(exist_ok=True)
     except FileExistsError:
         sys.stderr.write(
             'Build path already exists, not generating pages: {}\n' \
