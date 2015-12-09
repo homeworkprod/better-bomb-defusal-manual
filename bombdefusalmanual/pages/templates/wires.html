@@ -1,0 +1,222 @@
+{% extends '_base.html' %}
+
+{% set title = 'On the Subject of Wires' %}
+
+{% block head %}
+  <style>
+    tbody th {
+      background-color: #eeeeee;
+    }
+    th,
+    td {
+      vertical-align: top;
+    }
+
+    ul.conditions {
+      list-style: disc;
+      margin: 0 0 0 1em;
+      padding: 0;
+    }
+
+    *[class^=color-] {
+      border-radius: 5px;
+      padding: 0 0.2em;
+    }
+
+    .color-black {
+      background-color: #000000;
+    }
+    .color-blue {
+      background-color: #0000ff;
+    }
+    .color-red {
+      background-color: #ff0000;
+    }
+    .color-yellow {
+      background-color: #ffff00;
+    }
+    .color-white {
+      background-color: #ffffff;
+    }
+
+    .color-black,
+    .color-blue,
+    .color-red {
+      color: #ffffff;
+    }
+    .color-yellow,
+    .color-white {
+      border: currentColor solid 1px;
+      color: #000000;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <table>
+    <thead>
+      <tr>
+        <th>Conditions</th>
+        <th>Wire to cut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th colspan="2">3 wires</th>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>No {{ 'red'|color }} wires?</li>
+          </ul>
+        </td>
+        <td>✄ 2nd</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Last wire is {{ 'white'|color }}?</li>
+          </ul>
+        </td>
+        <td>✄ last</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>More than one {{ 'blue'|color }} wire?</li>
+          </ul>
+        </td>
+        <td>✄ last {{ 'blue'|color }}</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Otherwise</li>
+          </ul>
+        </td>
+        <td>✄ last</td>
+      </tr>
+      <tr>
+        <th colspan="2">4 wires</th>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>More than one {{ 'red'|color }} wire and</li>
+            <li>last digit of the serial number is <em>odd</em>?</li>
+          </ul>
+        </td>
+        <td>✄ last {{ 'red'|color }}</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Last wire is {{ 'yellow'|color }} and</li>
+            <li>no {{ 'red'|color }} wires?</li>
+          </ul>
+        </td>
+        <td>✄ 1st</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Exactly one {{ 'blue'|color }} wire?</li>
+          </ul>
+        </td>
+        <td>✄ 1st</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>More than one {{ 'yellow'|color }} wire?</li>
+          </ul>
+        </td>
+        <td>✄ last</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Otherwise</li>
+          </ul>
+        </td>
+        <td>✄ 2nd</td>
+      </tr>
+      <tr>
+        <th colspan="2">5 wires</th>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Last wire is {{ 'black'|color }} and</li>
+            <li>last digit of the serial number is <em>odd</em>?</li>
+          </ul>
+        </td>
+        <td>✄ 4th</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Exactly one {{ 'red'|color }} wire and</li>
+            <li>more than one {{ 'yellow'|color }} wire?</li>
+          </ul>
+        </td>
+        <td>✄ 1st</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>No {{ 'black'|color }} wires?</li>
+          </ul>
+        </td>
+        <td>✄ 2nd</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Otherwise</li>
+          </ul>
+        </td>
+        <td>✄ 1st</td>
+      </tr>
+      <tr>
+        <th colspan="2">6 wires</th>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>No {{ 'yellow'|color }} wires and</li>
+            <li>last digit of the serial number is <em>odd</em>?</li>
+          </ul>
+        </td>
+        <td>✄ 3rd</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Exactly one {{ 'yellow'|color }} wire and</li>
+            <li>more than one {{ 'white'|color }} wire?</li>
+          </ul>
+        </td>
+        <td>✄ 4th</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>No {{ 'red'|color }} wires?</li>
+          </ul>
+        </td>
+        <td>✄ last</td>
+      </tr>
+      <tr>
+        <td>
+          <ul class="conditions">
+            <li>Otherwise</li>
+          </ul>
+        </td>
+        <td>✄ 4th</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}
