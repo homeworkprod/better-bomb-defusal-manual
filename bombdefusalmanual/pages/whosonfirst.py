@@ -8,7 +8,7 @@ On the Subject of Who's on First
 """
 
 from ..subjects.whosonfirst import ButtonPosition, BUTTON_LABELS_FORWARDS, \
-    DISPLAY_VALUES_TO_BUTTON_POSITIONS
+    DISPLAY_VALUES_TO_BUTTON_POSITIONS, drop_unreachable_push_button_labels
 from ..templating import render_template
 
 
@@ -28,7 +28,9 @@ def render_page():
         for display_value, button_position
         in DISPLAY_VALUES_TO_BUTTON_POSITIONS.items()}
 
+    button_labels_forwards = drop_unreachable_push_button_labels(BUTTON_LABELS_FORWARDS)
+
     return render_template(
         'whosonfirst',
         display_values_to_button_positions=display_values_to_button_positions,
-        button_labels_forwards=BUTTON_LABELS_FORWARDS)
+        button_labels_forwards=button_labels_forwards)

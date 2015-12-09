@@ -8,6 +8,7 @@ On the Subject of Who's on First
 """
 
 from enum import Enum
+from itertools import takewhile
 
 
 ButtonPosition = Enum('ButtonPosition', [
@@ -82,6 +83,15 @@ BUTTON_LABELS_FORWARDS = {
     'SURE':    ['YOU ARE', 'DONE', 'LIKE', 'YOU\'RE', 'YOU', 'HOLD', 'UH HUH', 'UR', 'SURE', 'U', 'WHAT?', 'NEXT', 'YOUR', 'UH UH'],
     'LIKE':    ['YOU\'RE', 'NEXT', 'U', 'UR', 'HOLD', 'DONE', 'UH UH', 'WHAT?', 'UH HUH', 'YOU', 'LIKE', 'SURE', 'YOU ARE', 'YOUR'],
 }
+
+
+def drop_unreachable_push_button_labels(forwards):
+    return {k: list(take_up_to(xs, k)) for k, xs in forwards.items()}
+
+
+def take_up_to(iterable, last_element_to_take):
+    yield from takewhile(lambda x: x != last_element_to_take, iterable)
+    yield last_element_to_take
 
 
 def step1(ui):
