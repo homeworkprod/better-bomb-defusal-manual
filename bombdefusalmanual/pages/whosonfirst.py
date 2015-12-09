@@ -7,7 +7,7 @@ On the Subject of Who's on First
 :License: MIT, see LICENSE for details.
 """
 
-from ..subjects.whosonfirst import ButtonPosition, \
+from ..subjects.whosonfirst import ButtonPosition, BUTTON_LABELS_FORWARDS, \
     DISPLAY_VALUES_TO_BUTTON_POSITIONS
 from ..templating import render_template
 
@@ -30,4 +30,5 @@ def render_page():
 
     return render_template(
         'whosonfirst',
-        display_values_to_button_positions=display_values_to_button_positions)
+        display_values_to_button_positions=display_values_to_button_positions,
+        button_labels_forwards=BUTTON_LABELS_FORWARDS)

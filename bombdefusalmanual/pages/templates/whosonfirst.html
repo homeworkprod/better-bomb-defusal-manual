@@ -4,6 +4,9 @@
 
 {% block head %}
   <style>
+    .key {
+      font-weight: bold;
+    }
     .button-position {
       font-size: 1.1em;
       font-weight: bold;
@@ -24,10 +27,28 @@
     <tbody>
       {%- for display_value, button_position in display_values_to_button_positions|dictsort %}
       <tr>
-        <td><kbd>{{ display_value }}</kbd></td>
+        <td class="key"><kbd>{{ display_value }}</kbd></td>
         <td class="button-position">{{ button_position }}</td>
       </tr>
       {%- endfor %}
     </tbody>
   </table>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Seen Button</th>
+        <th>Button to Press</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for label_of_seen_button, labels_of_buttons_to_press in button_labels_forwards|dictsort %}
+      <tr>
+        <td class="key"><kbd>{{ label_of_seen_button }}</kbd></td>
+        <td><kbd>{{ labels_of_buttons_to_press|join(', ') }}</kbd></td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+
 {% endblock %}
