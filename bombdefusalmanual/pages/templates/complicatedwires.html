@@ -1,6 +1,6 @@
 {% extends '_base.html' %}
 
-{% set title = 'On the Subject of Wires' %}
+{% set title = 'On the Subject of Complicated Wires' %}
 
 {% block head %}
   <style>
@@ -8,11 +8,16 @@
     table.complicatedwires td {
       text-align: center;
     }
-    table.complicatedwires th {
+    table.complicatedwires thead th {
       background-color: #eeeeee;
     }
     table.complicatedwires tbody th {
-      font-weight: normal;
+      border-color: #cccccc;
+      border-style: solid;
+      border-width: 1px;
+    }
+    table.complicatedwires td {
+      vertical-align: middle;
     }
   </style>
 {% endblock %}
@@ -21,9 +26,9 @@
   {%- set led = 'LED' %}
   {%- set star = '★' %}
   {%- set cut = '✄' %}
-  {%- set cut_if_enough_batteries = '■■□ ■■□ +' %}
+  {%- set cut_if_enough_batteries = '⚡⚡+' %}
   {%- set cut_if_parallel_port = '•◥■◤•' %}
-  {%- set cut_if_last_serial_digit_is_even = '#/2' %}
+  {%- set cut_if_last_serial_digit_is_even = '<sup>#</sup>/<sub>2</sub>'|safe %}
   {%- set dont_cut = '×' %}
 
   <table class="complicatedwires">
@@ -38,28 +43,34 @@
     </thead>
     <tbody>
       <tr>
-        <th>{{ 'white'|colorize }}</th>
+        <th style="background-color: white;">&nbsp;</th>
         <td>{{ dont_cut }}</td>
         <td>{{ cut_if_enough_batteries }}</td>
         <td>{{ cut }}</td>
         <td>{{ cut }}</td>
       </tr>
       <tr>
-        <th>{{ 'red'|colorize }}</th>
-        <td>{{ cut_if_enough_batteries }}</td>
-        <td>{{ cut_if_enough_batteries }}</td>
-        <td>{{ cut }}</td>
-        <td>{{ cut_if_last_serial_digit_is_even }}</td>
+        <th style="background-image: repeating-linear-gradient(-45deg, white, white 10px, red 10px, red 20px);">&nbsp;</th>
+        <td rowspan="2">{{ cut_if_enough_batteries }}</td>
+        <td rowspan="2">{{ cut_if_enough_batteries }}</td>
+        <td rowspan="2">{{ cut }}</td>
+        <td rowspan="2">{{ cut_if_last_serial_digit_is_even }}</td>
       </tr>
       <tr>
-        <th>{{ 'blue'|colorize }}</th>
-        <td>{{ cut_if_parallel_port }}</td>
-        <td>{{ cut_if_parallel_port }}</td>
-        <td>{{ dont_cut }}</td>
-        <td>{{ cut_if_last_serial_digit_is_even }}</td>
+        <th style="background-color: red;">&nbsp;</th>
       </tr>
       <tr>
-        <th>{{ 'red'|colorize }} + {{ 'blue'|colorize }}</th>
+        <th style="background-image: repeating-linear-gradient(-45deg, white, white 10px, blue 10px, blue 20px);">&nbsp;</th>
+        <td rowspan="2">{{ cut_if_parallel_port }}</td>
+        <td rowspan="2">{{ cut_if_parallel_port }}</td>
+        <td rowspan="2">{{ dont_cut }}</td>
+        <td rowspan="2">{{ cut_if_last_serial_digit_is_even }}</td>
+      </tr>
+      <tr>
+        <th style="background-color: blue;">&nbsp;</th>
+      </tr>
+      <tr>
+        <th style="background-image: repeating-linear-gradient(-45deg, red, red 10px, blue 10px, blue 20px);">&nbsp;</th>
         <td>{{ cut_if_last_serial_digit_is_even }}</td>
         <td>{{ dont_cut }}</td>
         <td>{{ cut_if_parallel_port }}</td>
