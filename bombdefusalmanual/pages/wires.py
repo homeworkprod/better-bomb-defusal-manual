@@ -11,10 +11,4 @@ from ..templating import render_template
 
 
 def render_page():
-    custom_filters = {'color': render_color}
-
-    return render_template('wires', custom_filters=custom_filters)
-
-
-def render_color(name):
-    return '<span class="color-{0}">{0}</span>'.format(name)
+    return render_template('wires')
