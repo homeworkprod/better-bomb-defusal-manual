@@ -13,12 +13,12 @@ from ..templating import render_template
 
 
 BUTTOM_POSITION_SYMBOLS = {
-    ButtonPosition.top_left:     '↖',
-    ButtonPosition.middle_left:  '←',
-    ButtonPosition.bottom_left:  '↙',
-    ButtonPosition.top_right:    '↗',
-    ButtonPosition.middle_right: '→',
-    ButtonPosition.bottom_right: '↘',
+    ButtonPosition.top_left:     '⬉',
+    ButtonPosition.middle_left:  '⬅',
+    ButtonPosition.bottom_left:  '⬋',
+    ButtonPosition.top_right:    '⬈',
+    ButtonPosition.middle_right: '➡',
+    ButtonPosition.bottom_right: '⬊',
 }
 
 
