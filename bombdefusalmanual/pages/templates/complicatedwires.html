@@ -1,0 +1,71 @@
+{% extends '_base.html' %}
+
+{% set title = 'On the Subject of Wires' %}
+
+{% block head %}
+  <style>
+    table.complicatedwires th,
+    table.complicatedwires td {
+      text-align: center;
+    }
+    table.complicatedwires th {
+      background-color: #eeeeee;
+    }
+    table.complicatedwires tbody th {
+      font-weight: normal;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  {%- set led = 'LED' %}
+  {%- set star = '★' %}
+  {%- set cut = '✄' %}
+  {%- set cut_if_enough_batteries = '■■□ ■■□ +' %}
+  {%- set cut_if_parallel_port = '•◥■◤•' %}
+  {%- set cut_if_last_serial_digit_is_even = '#/2' %}
+  {%- set dont_cut = '×' %}
+
+  <table class="complicatedwires">
+    <thead>
+      <tr>
+        <th>Wire Color</th>
+        <th>LED</th>
+        <th>LED + {{ star }}</th>
+        <th>{{ star }}</th>
+        <th>neither</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>{{ 'white'|colorize }}</th>
+        <td>{{ dont_cut }}</td>
+        <td>{{ cut_if_enough_batteries }}</td>
+        <td>{{ cut }}</td>
+        <td>{{ cut }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'red'|colorize }}</th>
+        <td>{{ cut_if_enough_batteries }}</td>
+        <td>{{ cut_if_enough_batteries }}</td>
+        <td>{{ cut }}</td>
+        <td>{{ cut_if_last_serial_digit_is_even }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'blue'|colorize }}</th>
+        <td>{{ cut_if_parallel_port }}</td>
+        <td>{{ cut_if_parallel_port }}</td>
+        <td>{{ dont_cut }}</td>
+        <td>{{ cut_if_last_serial_digit_is_even }}</td>
+      </tr>
+      <tr>
+        <th>{{ 'red'|colorize }} + {{ 'blue'|colorize }}</th>
+        <td>{{ cut_if_last_serial_digit_is_even }}</td>
+        <td>{{ dont_cut }}</td>
+        <td>{{ cut_if_parallel_port }}</td>
+        <td>{{ cut_if_last_serial_digit_is_even }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -10,6 +10,7 @@
 from pathlib import Path
 import sys
 
+from bombdefusalmanual.pages import complicatedwires
 from bombdefusalmanual.pages import morsecode
 from bombdefusalmanual.pages import passwords
 from bombdefusalmanual.pages import thebutton
@@ -18,6 +19,7 @@ from bombdefusalmanual.pages import wires
 
 
 PAGE_MODULES = [
+    complicatedwires,
     morsecode,
     passwords,
     thebutton,
