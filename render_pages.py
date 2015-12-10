@@ -12,6 +12,7 @@ import sys
 
 from bombdefusalmanual.pages import morsecode
 from bombdefusalmanual.pages import passwords
+from bombdefusalmanual.pages import thebutton
 from bombdefusalmanual.pages import whosonfirst
 from bombdefusalmanual.pages import wires
 
@@ -19,6 +20,7 @@ from bombdefusalmanual.pages import wires
 PAGE_MODULES = [
     morsecode,
     passwords,
+    thebutton,
     whosonfirst,
     wires,
 ]

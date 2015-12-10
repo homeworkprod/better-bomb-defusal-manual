@@ -1,0 +1,124 @@
+{% extends '_base.html' %}
+
+{% set title = 'On the Subject of The Button' %}
+
+{% block head %}
+  <style>
+    tbody th {
+      background-color: #eeeeee;
+    }
+
+    ul.conditions {
+      list-style: disc;
+      margin: 0 0 0 1em;
+      padding: 0;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <table>
+    <thead>
+      <tr>
+        <th>Rule #</th>
+        <th>Conditions</th>
+        <th>Press button and …</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="number">1.</td>
+        <td>
+          <ul class="conditions">
+            <li>Is {{ 'blue'|colorize }} and</li>
+            <li>labeled &quot;Abort&quot;?</li>
+          </ul>
+        </td>
+        <td>hold</td>
+      </tr>
+      <tr>
+        <td class="number">2.</td>
+        <td>
+          <ul class="conditions">
+            <li>More than one battery and</li>
+            <li>labeled &quot;Detonate&quot;?</li>
+          </ul>
+        </td>
+        <td>release immediately</td>
+      </tr>
+      <tr>
+        <td class="number">3.</td>
+        <td>
+          <ul class="conditions">
+            <li>Is {{ 'white'|colorize }} and</li>
+            <li>a lit indicator labeled &quot;CAR&quot; exists?</li>
+          </ul>
+        </td>
+        <td>hold</td>
+      </tr>
+      <tr>
+        <td class="number">4.</td>
+        <td>
+          <ul class="conditions">
+            <li>More than two batteries and</li>
+            <li>a lit indicator labeled &quot;FRK&quot; exists?</li>
+          </ul>
+        </td>
+        <td>release immediately</td>
+      </tr>
+      <tr>
+        <td class="number">5.</td>
+        <td>
+          <ul class="conditions">
+            <li>Is {{ 'yellow'|colorize }}?</li>
+          </ul>
+        </td>
+        <td>hold</td>
+      </tr>
+      <tr>
+        <td class="number">6.</td>
+        <td>
+          <ul class="conditions">
+            <li>Is {{ 'red'|colorize }} and</li>
+            <li>labeled &quot;Hold&quot;?</li>
+          </ul>
+        </td>
+        <td>release immediately</td>
+      </tr>
+      <tr>
+        <td class="number">7.</td>
+        <td>
+          <ul class="conditions">
+            <li>None of the above?</li>
+          </ul>
+        </td>
+        <td>hold</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table style="margin-top: 2em;">
+    <thead>
+      <tr>
+        <th>Strip Color</th>
+        <th>Digit in Countdown Timer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ 'blue'|colorize }}</td>
+        <td class="number">4</td>
+      </tr>
+      <tr>
+        <td>{{ 'yellow'|colorize }}</td>
+        <td class="number">5</td>
+      </tr>
+      <tr>
+        <td>otherwise</td>
+        <td class="number">1</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}
