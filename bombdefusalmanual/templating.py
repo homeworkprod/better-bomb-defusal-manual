@@ -7,7 +7,8 @@ Template loading and rendering
 :License: MIT, see LICENSE for details.
 """
 
-from jinja2 import Environment, PackageLoader, StrictUndefined
+from jinja2 import Environment, evalcontextfilter, Markup, PackageLoader, \
+    StrictUndefined
 
 
 FILENAME_EXTENSION = '.html'
@@ -30,12 +31,17 @@ def load_template(name):
 
 
 def create_environment():
-    env = Environment(loader=LOADER, undefined=StrictUndefined)
+    env = Environment(
+        autoescape=True,
+        loader=LOADER,
+        undefined=StrictUndefined)
 
     env.filters['color'] = render_color
 
     return env
 
 
-def render_color(name):
-    return '<span class="color-{0}">{0}</span>'.format(name)
+@evalcontextfilter
+def render_color(eval_ctx, name):
+    html = '<span class="color-{0}">{0}</span>'.format(name)
+    return Markup(html) if eval_ctx.autoescape else html
