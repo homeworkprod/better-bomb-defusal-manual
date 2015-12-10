@@ -36,12 +36,12 @@ def create_environment():
         loader=LOADER,
         undefined=StrictUndefined)
 
-    env.filters['color'] = render_color
+    env.filters['colorize'] = colorize
 
     return env
 
 
 @evalcontextfilter
-def render_color(eval_ctx, name):
+def colorize(eval_ctx, name):
     html = '<span class="color-{0}">{0}</span>'.format(name)
     return Markup(html) if eval_ctx.autoescape else html
